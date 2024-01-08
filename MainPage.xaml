@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gezi_Uygulamam.MainPage"
+             Appearing="ContentPage_Appearing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="0.01*" />
+        </Grid.RowDefinitions>
+
+        <SearchBar Grid.Row="0" Placeholder="Notlarda Ara..." TextChanged="SearchBar_TextChanged" />
+        <ScrollView Grid.Row="1">
+
+            <CollectionView x:Name="Trip_List" ItemsLayout="VerticalGrid, 2" SelectionMode="Single" SelectionChanged="Trip_List_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="10">
+
+                            <VerticalStackLayout>
+                                <Image Source="{Binding ImgUrl}"  WidthRequest="300" HeightRequest="100"/>
+                                <HorizontalStackLayout >
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="Red"/>
+                                    <Label Text="{Binding Location}" />
+                                </HorizontalStackLayout >
+                                <HorizontalStackLayout >
+                                    <Label Text="{Binding Date}" />
+                                    <Label Text="{Binding Time}"/>
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </ScrollView>
+
+        <Button x:Name="add_btn" Text="+" FontAttributes="Bold" FontSize="Large" Clicked="add_btn_Clicked"  HorizontalOptions="End" VerticalOptions="End"  WidthRequest="50" HeightRequest="50" BackgroundColor="Green" Margin="10" Grid.Row="2"/>
+
+    </Grid>
+</ContentPage>
